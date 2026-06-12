@@ -12,6 +12,7 @@ import Splash3D from './components/Splash3D';
 import AlphabetPage from './pages/Alphabet';
 import Flashcards from './pages/Flashcards';
 import SecretLove from './components/SecretLove';
+import SecretSorry from './components/SecretSorry';
 
 function App() {
   const [userName, setUserName] = useLocalStorage('userName', '');
@@ -112,6 +113,7 @@ function App() {
           <p>Created for the sake of learning the Book of Allah.</p>
           <div style={{ marginTop: '1.5rem' }}>
             <SecretLove />
+            <SecretSorry />
           </div>
         </div>
       </footer>

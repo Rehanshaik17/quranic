@@ -1,35 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import './SecretLove.css';
+import './SecretSorry.css';
 
 const QUOTES = [
   {
-    urdu1: "تمہاری یاد کے سائے میں زندگی ہے میری،",
-    urdu2: "یہ کیسا عشق ہے کہ تم بن ہر خوشی ہے ادھوری۔",
-    english: "\"My life exists in the shadow of your memories, What kind of love is this, that without you every joy is incomplete.\""
+    urdu1: "مجھے معاف کر دو، میری جان،",
+    urdu2: "تمہارے بغیر میرا دل اداس ہے۔",
+    english: "\"Please forgive me, my love. My heart is sad without you.\""
   },
   {
-    urdu1: "تیری دھڑکن ہی زندگی کا قصہ ہے میرا،",
-    urdu2: "تو زندگی کا ایک اہم حصہ ہے میرا۔",
-    english: "\"Your heartbeat is the story of my life, You are an essential part of my life.\""
+    urdu1: "میری غلطی تھی، میں مانتا ہوں،",
+    urdu2: "تمہاری مسکراہٹ کے بغیر سب سونا ہے۔",
+    english: "\"It was my mistake, I admit it. Everything is empty without your smile.\""
   },
   {
-    urdu1: "صرف تم ہی تم ہو میری نگاہوں میں،",
-    urdu2: "تیری محبت کے سوا اور کچھ نہیں میری دعاؤں میں۔",
-    english: "\"There is only you and you in my eyes, There is nothing but your love in my prayers.\""
+    urdu1: "تمہاری آنکھوں میں آنسو نہیں دیکھ سکتا،",
+    urdu2: "مجھے میری نادانی کی معافی دے دو۔",
+    english: "\"I can't see tears in your eyes, please forgive me for my foolishness.\""
   },
   {
-    urdu1: "چاند کی روشنی بھی تیرے سامنے پھیکی ہے،",
-    urdu2: "یہ مسکراہٹ تیری میری جینے کی وجہ ہے۔",
-    english: "\"Even the moonlight fades before you, This smile of yours is the reason I live.\""
+    urdu1: "میں شرمندہ ہوں اپنے کیے پر،",
+    urdu2: "کیا تم مجھے ایک اور موقع دے سکتے ہو؟",
+    english: "\"I am ashamed of what I did, can you give me another chance?\""
   },
   {
-    urdu1: "تیرے عشق میں اس قدر ڈوب گئے ہیں ہم،",
-    urdu2: "کہ اب تو خود کو بھی ڈھونڈنا مشکل لگتا ہے۔",
-    english: "\"I have drowned so deep in your love, That now it seems difficult to even find myself.\""
+    urdu1: "تمہاری محبت میری زندگی ہے،",
+    urdu2: "مجھے معاف کر کے واپس آ جاؤ۔",
+    english: "\"Your love is my life, forgive me and come back.\""
   }
 ];
 
-export default function SecretLove() {
+export default function SecretSorry() {
   const [showPrompt, setShowPrompt] = useState(false);
   const [password, setPassword] = useState('');
   const [unlocked, setUnlocked] = useState(false);
@@ -82,11 +82,11 @@ export default function SecretLove() {
     <>
       {/* Secret trigger button */}
       <span 
-        className="secret-trigger" 
+        className="secret-sorry-trigger" 
         onClick={handleSecretClick}
-        title="Secret"
+        title="I am sorry"
       >
-        ❤️
+        🥺
       </span>
 
       {/* Password Prompt Modal */}
@@ -120,28 +120,27 @@ export default function SecretLove() {
         </div>
       )}
 
-      {/* Unlocked Love Screen */}
+      {/* Unlocked Sorry Screen */}
       {unlocked && (
-        <div className="love-screen">
+        <div className="sorry-screen">
           <button className="close-love-btn" onClick={() => setUnlocked(false)}>×</button>
           
-          <div className="floating-hearts">
-            {Array.from({ length: 20 }).map((_, i) => (
-              <div key={i} className="heart" style={{
+          <div className="rain-container">
+            {Array.from({ length: 30 }).map((_, i) => (
+              <div key={i} className="raindrop" style={{
                 left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 5}s`,
-                animationDuration: `${Math.random() * 3 + 3}s`,
-                transform: `scale(${Math.random() * 1.5 + 0.5})`
-              }}>❤️</div>
+                animationDelay: `${Math.random() * 2}s`,
+                animationDuration: `${Math.random() * 1 + 0.5}s`
+              }}></div>
             ))}
           </div>
 
-          <div className="love-content">
-            <h1 className="bounce-text">
-              {import.meta.env.VITE_SECRET_MESSAGE}
+          <div className="sorry-content">
+            <h1 className="float-text">
+              I am so sorry...
             </h1>
             
-            <div className="pulse-emoji" style={{ marginBottom: '1.5rem' }}>🥺</div>
+            <div className="pulse-emoji" style={{ marginBottom: '1.5rem' }}>🥺💔</div>
 
             <div className={`urdu-sher-card ${fadeQuote ? 'faded' : ''}`}>
               <p className="urdu-text">{QUOTES[quoteIndex].urdu1}</p>
@@ -149,8 +148,6 @@ export default function SecretLove() {
               <div className="sher-divider"></div>
               <p className="english-trans">{QUOTES[quoteIndex].english}</p>
             </div>
-            
-            <div className="pulse-emoji">💞🌹🥰</div>
           </div>
         </div>
       )}
